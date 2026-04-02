@@ -424,6 +424,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);dis
     <div class="scanner-result-text" id="scannerResultText">Searching...</div>
     <div class="scanner-actions" id="scannerActions">
       <button class="scanner-action-btn btn-search-tw" id="btnSearchTW" onclick="searchTackleWarehouse()">🛒 Search Tackle Warehouse</button>
+      <button class="scanner-action-btn" style="background:rgba(88,166,255,0.15);color:var(--blue);border:1px solid var(--blue);" onclick="searchGoogle()">🔍 Google this barcode</button>
       <button class="scanner-action-btn btn-manual" onclick="closeScanner()">✏️ Fill in manually</button>
     </div>
   </div>
@@ -995,15 +996,21 @@ function stopCamera(){
 
 function searchTackleWarehouse(){
   if(!lastScannedCode) return;
-  // Search TW with the barcode number — opens in Safari and user can confirm the product
+  // Use TW's actual search URL format with the barcode number
   const query = encodeURIComponent(lastScannedCode);
-  const twUrl = `https://www.tacklewarehouse.com/search.html?Ntt=${query}&Ntk=All`;
+  const twUrl = `https://www.tacklewarehouse.com/search-tackle_nocat.html?searchtext=${query}`;
   window.open(twUrl, '_blank');
   closeScanner();
   showToast('Copy the TW link and paste it below!');
 }
 
-function clearBarcode(){
+function searchGoogle(){
+  if(!lastScannedCode) return;
+  const query = encodeURIComponent(lastScannedCode + ' fishing lure');
+  window.open(`https://www.google.com/search?q=${query}`, '_blank');
+  closeScanner();
+  showToast('Find the product, then paste the TW link below!');
+}
   lastScannedCode = null;
   document.getElementById('barcodeResult').style.display = 'none';
   document.getElementById('barcodeValue').textContent = '';
