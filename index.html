@@ -1011,6 +1011,8 @@ function searchGoogle(){
   closeScanner();
   showToast('Find the product, then paste the TW link below!');
 }
+
+function clearBarcode(){
   lastScannedCode = null;
   document.getElementById('barcodeResult').style.display = 'none';
   document.getElementById('barcodeValue').textContent = '';
