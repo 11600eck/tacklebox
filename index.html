@@ -10,12 +10,10 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-.skip-link{position:absolute;left:-9999px;top:8px;z-index:999;background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:600;}
-.skip-link:focus{left:8px;}
 :root{
   --bg:#0d1117;--bg2:#161b22;--bg3:#1c2330;--surface:#21262d;
-  --border:rgba(255,255,255,0.14);--border2:rgba(255,255,255,0.22);
-  --text:#e6edf3;--text2:#b1bac4;--text3:#9da7b3;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --text:#e6edf3;--text2:#8b949e;--text3:#6e7681;
   --accent:#3fb950;--accent2:#238636;--accent-dim:rgba(63,185,80,0.12);
   --blue:#58a6ff;--blue-dim:rgba(88,166,255,0.12);
   --amber:#d29922;--amber-dim:rgba(210,153,34,0.12);
@@ -24,8 +22,8 @@
 }
 @media(prefers-color-scheme:light){:root{
   --bg:#f6f8fa;--bg2:#ffffff;--bg3:#f0f2f5;--surface:#ffffff;
-  --border:rgba(0,0,0,0.14);--border2:rgba(0,0,0,0.22);
-  --text:#1f2328;--text2:#4b5563;--text3:#667085;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);
+  --text:#1f2328;--text2:#656d76;--text3:#9198a1;
   --accent:#1a7f37;--accent2:#2da44e;--accent-dim:rgba(26,127,55,0.10);
   --blue:#0969da;--blue-dim:rgba(9,105,218,0.10);
   --amber:#9a6700;--amber-dim:rgba(154,103,0,0.10);
@@ -33,18 +31,15 @@
 }}
 html,body{height:100%;overflow:hidden;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;max-width:430px;margin:0 auto;}
-button,input,select,textarea,[role="button"],[tabindex="0"]{font:inherit;}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
-@media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important;scroll-behavior:auto !important;}}
 .app{display:flex;flex-direction:column;height:100vh;}
 .header{height:var(--header-h);background:var(--bg2);border-bottom:0.5px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;flex-shrink:0;z-index:10;}
 .header-logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:var(--accent);}
 .header-right{margin-left:auto;display:flex;gap:8px;}
-.icon-btn{width:44px;height:44px;border-radius:8px;border:0.5px solid var(--border2);background:var(--surface);color:var(--text2);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all 0.15s;}
+.icon-btn{width:34px;height:34px;border-radius:8px;border:0.5px solid var(--border2);background:var(--surface);color:var(--text2);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all 0.15s;}
 .icon-btn:hover{background:var(--bg3);color:var(--text);}
 .content{flex:1;overflow-y:auto;overflow-x:hidden;padding-bottom:calc(var(--tab-h) + 8px);-webkit-overflow-scrolling:touch;}
 .tab-bar{height:var(--tab-h);background:var(--bg2);border-top:0.5px solid var(--border);display:flex;position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;z-index:20;}
-.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;color:var(--text3);font-size:10px;font-weight:500;transition:color 0.15s;padding:6px 4px 8px;border:none;position:relative;background:transparent;min-height:44px;}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;color:var(--text3);font-size:10px;font-weight:500;transition:color 0.15s;padding-bottom:4px;position:relative;}
 .tab-item.active{color:var(--accent);}
 .tab-item.active::after{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--accent);border-radius:0 0 2px 2px;}
 .tab-icon{font-size:20px;line-height:1;}
@@ -66,7 +61,7 @@ button,input,select,textarea,[role="button"],[tabindex="0"]{font:inherit;}
 /* Filter rows */
 .filter-row{display:flex;gap:6px;padding:0 16px 6px;overflow-x:auto;scrollbar-width:none;}
 .filter-row::-webkit-scrollbar{display:none;}
-.chip{flex-shrink:0;padding:8px 14px;min-height:36px;border-radius:20px;font-size:12px;font-weight:500;border:0.5px solid var(--border2);background:var(--surface);color:var(--text2);cursor:pointer;white-space:nowrap;transition:all 0.15s;}
+.chip{flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500;border:0.5px solid var(--border2);background:var(--surface);color:var(--text2);cursor:pointer;white-space:nowrap;transition:all 0.15s;}
 .chip:hover{border-color:var(--accent);color:var(--accent);}
 .chip.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
 .chip.brand-chip.active{background:var(--blue-dim);border-color:var(--blue);color:var(--blue);}
@@ -81,7 +76,7 @@ button,input,select,textarea,[role="button"],[tabindex="0"]{font:inherit;}
 .gear-card-img{width:100%;aspect-ratio:1;background:var(--bg3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .gear-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .gear-card-img .no-img{font-size:38px;}
-.fav-btn{position:absolute;top:7px;right:7px;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,0.4);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#fff;transition:transform 0.15s;z-index:2;}
+.fav-btn{position:absolute;top:7px;right:7px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,0.4);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#fff;transition:transform 0.15s;z-index:2;}
 .fav-btn:hover{transform:scale(1.15);}
 .fav-btn.faved{color:#f8a100;}
 .gear-card-body{padding:8px 10px 10px;}
@@ -92,7 +87,7 @@ button,input,select,textarea,[role="button"],[tabindex="0"]{font:inherit;}
 .card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:7px;}
 .card-price{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--text);}
 .qty-stepper{display:flex;align-items:center;border:0.5px solid var(--border2);border-radius:8px;overflow:hidden;}
-.qty-btn{width:32px;height:32px;background:var(--bg3);border:none;color:var(--text2);font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.12s;line-height:1;}
+.qty-btn{width:26px;height:24px;background:var(--bg3);border:none;color:var(--text2);font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.12s;line-height:1;}
 .qty-btn:hover{background:var(--accent-dim);color:var(--accent);}
 .qty-btn:active{background:var(--accent);color:#fff;}
 .qty-num{font-size:12px;font-weight:600;color:var(--text);min-width:22px;text-align:center;background:var(--surface);padding:0 2px;line-height:24px;}
@@ -124,13 +119,11 @@ button,input,select,textarea,[role="button"],[tabindex="0"]{font:inherit;}
 /* TW link */
 .tw-input-wrap{position:relative;}
 .tw-input-wrap .form-input{padding-right:56px;}
-.tw-open-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:var(--blue-dim);color:var(--blue);border:none;border-radius:6px;padding:8px 10px;min-height:36px;font-size:11px;font-weight:500;cursor:pointer;}
+.tw-open-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:var(--blue-dim);color:var(--blue);border:none;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:500;cursor:pointer;}
 
 /* Buttons */
 .btn-primary{width:100%;padding:13px;background:var(--accent);border:none;border-radius:10px;font-family:'Syne',sans-serif;font-size:15px;font-weight:600;color:#fff;cursor:pointer;transition:opacity 0.15s,transform 0.1s;margin-top:4px;}
-.btn-primary:hover{background:var(--accent2);opacity:1;}
-.btn-primary:focus-visible{outline:3px solid #fff;outline-offset:2px;}
-.btn-secondary:focus-visible,.chip:focus-visible,.icon-btn:focus-visible,.tab-item:focus-visible,.qty-btn:focus-visible,.fav-btn:focus-visible,.edit-step-btn:focus-visible,.cat-picker-btn:focus-visible,.tw-open-btn:focus-visible,.settings-row:focus-visible,.cat-parent-item:focus-visible,.cat-sub-item:focus-visible,.gear-card:focus-visible,.toggle:focus-visible{box-shadow:0 0 0 3px var(--accent-dim);border-color:var(--accent);}
+.btn-primary:hover{opacity:0.88;}
 .btn-primary:active{transform:scale(0.98);}
 .btn-secondary{width:100%;padding:12px;background:transparent;border:0.5px solid var(--border2);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center;gap:8px;}
 .btn-secondary:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);}
@@ -156,17 +149,17 @@ button,input,select,textarea,[role="button"],[tabindex="0"]{font:inherit;}
 .settings-screen{padding:16px;}
 .settings-group{background:var(--surface);border:0.5px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px;}
 .settings-group-title{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.7px;text-transform:uppercase;color:var(--text3);padding:12px 16px 8px;}
-.settings-row{padding:13px 16px;display:flex;align-items:center;gap:12px;border-top:0.5px solid var(--border);cursor:pointer;transition:background 0.15s;min-height:44px;}
+.settings-row{padding:13px 16px;display:flex;align-items:center;gap:12px;border-top:0.5px solid var(--border);cursor:pointer;transition:background 0.15s;}
 .settings-row:first-of-type{border-top:none;}
 .settings-row:hover{background:var(--bg3);}
 .settings-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
 .si-green{background:var(--accent-dim);}.si-blue{background:var(--blue-dim);}.si-amber{background:var(--amber-dim);}.si-red{background:var(--red-dim);}
 .settings-label{flex:1;font-size:14px;color:var(--text);}
 .settings-val{font-size:13px;color:var(--text3);}
-.toggle{width:50px;height:28px;border-radius:14px;background:var(--bg3);border:0.5px solid var(--border2);position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0;}
+.toggle{width:42px;height:24px;border-radius:12px;background:var(--bg3);border:0.5px solid var(--border2);position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0;}
 .toggle.on{background:var(--accent);border-color:var(--accent);}
-.toggle::after{content:'';position:absolute;width:22px;height:22px;background:#fff;border-radius:50%;top:2px;left:2px;transition:left 0.2s;}
-.toggle.on::after{left:26px;}
+.toggle::after{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:2px;left:2px;transition:left 0.2s;}
+.toggle.on::after{left:20px;}
 
 /* Empty */
 .empty-state{text-align:center;padding:48px 24px;}
@@ -214,18 +207,45 @@ button,input,select,textarea,[role="button"],[tabindex="0"]{font:inherit;}
 /* Toast */
 .toast{position:fixed;bottom:calc(var(--tab-h) + 16px);left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;padding:10px 20px;border-radius:20px;z-index:200;opacity:0;transition:opacity 0.3s;pointer-events:none;white-space:nowrap;}
 .toast.show{opacity:1;}
+
+/* ── BARCODE SCANNER ── */
+.scan-btn{width:100%;padding:13px;background:var(--blue-dim);border:1px solid var(--blue);border-radius:10px;font-family:'Syne',sans-serif;font-size:15px;font-weight:600;color:var(--blue);cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;}
+.scan-btn:hover{background:var(--blue);color:#fff;}
+.scan-btn:active{transform:scale(0.98);}
+.scanner-overlay{display:none;position:fixed;inset:0;background:#000;z-index:300;flex-direction:column;align-items:center;justify-content:center;}
+.scanner-overlay.open{display:flex;}
+.scanner-video-wrap{position:relative;width:100%;max-width:430px;flex:1;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+#scannerVideo{width:100%;height:100%;object-fit:cover;}
+.scanner-frame{position:absolute;width:240px;height:140px;border:2px solid var(--accent);border-radius:8px;box-shadow:0 0 0 9999px rgba(0,0,0,0.55);}
+.scanner-frame::before,.scanner-frame::after{content:'';position:absolute;width:20px;height:20px;border-color:var(--accent);border-style:solid;}
+.scanner-frame::before{top:-2px;left:-2px;border-width:3px 0 0 3px;border-radius:4px 0 0 0;}
+.scanner-frame::after{bottom:-2px;right:-2px;border-width:0 3px 3px 0;border-radius:0 0 4px 0;}
+.scanner-line{position:absolute;width:220px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);animation:scanline 1.8s ease-in-out infinite;}
+@keyframes scanline{0%{top:20px;opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{top:116px;opacity:0;}}
+.scanner-header{width:100%;max-width:430px;padding:16px;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.8);}
+.scanner-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#fff;}
+.scanner-close{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;border-radius:8px;padding:6px 14px;font-size:13px;font-weight:500;cursor:pointer;}
+.scanner-footer{width:100%;max-width:430px;padding:20px 16px 32px;background:rgba(0,0,0,0.8);text-align:center;}
+.scanner-hint{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;}
+.scanner-result-text{font-family:'Syne',sans-serif;font-size:15px;font-weight:600;color:var(--accent);min-height:22px;}
+.scanner-actions{display:none;flex-direction:column;gap:10px;margin-top:14px;}
+.scanner-actions.visible{display:flex;}
+.scanner-action-btn{width:100%;padding:13px;border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all 0.15s;}
+.btn-search-tw{background:var(--accent);color:#fff;}
+.btn-search-tw:hover{opacity:0.88;}
+.btn-manual{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);}
+.btn-manual:hover{background:rgba(255,255,255,0.2);}
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to content</a>
 <div class="app">
   <div class="header">
     <span style="font-size:20px">🎣</span>
     <div class="header-logo">TackleBox</div>
-    <div class="header-right"><button class="icon-btn" type="button" aria-label="Sort inventory" onclick="showToast('Sort coming soon!')">⇅</button></div>
+    <div class="header-right"><div class="icon-btn" onclick="showToast('Sort coming soon!')">⇅</div></div>
   </div>
 
-  <main class="content" id="main-content">
+  <div class="content">
 
     <!-- INVENTORY -->
     <div class="screen active" id="screen-inventory">
@@ -258,7 +278,15 @@ button,input,select,textarea,[role="button"],[tabindex="0"]{font:inherit;}
       <div class="form-screen">
         <!-- Photo -->
         <div class="form-section">
-          <div class="form-section-title">📸 Item Photo</div>
+          <div class="form-section-title">📸 Item Photo & Barcode</div>
+          <button class="scan-btn" onclick="openScanner()">
+            <span style="font-size:18px">⬛</span> Scan Barcode
+          </button>
+          <div id="barcodeResult" style="display:none;background:var(--bg3);border:0.5px solid var(--border2);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:13px;color:var(--text2);">
+            <span style="color:var(--text3);font-size:11px;font-family:'DM Sans',sans-serif;">Scanned barcode</span><br>
+            <span id="barcodeValue" style="font-family:'Syne',sans-serif;font-weight:600;color:var(--text);font-size:15px;"></span>
+            <span style="float:right;cursor:pointer;color:var(--text3);font-size:13px;" onclick="clearBarcode()">✕</span>
+          </div>
           <div class="photo-picker" id="photoPicker">
             <div class="photo-picker-label">
               <div style="font-size:28px">📷</div>
@@ -331,42 +359,42 @@ button,input,select,textarea,[role="button"],[tabindex="0"]{font:inherit;}
       <div class="settings-screen">
         <div class="settings-group">
           <div class="settings-group-title">Inventory</div>
-          <div class="settings-row" role="button" tabindex="0" aria-label="Export inventory as CSV" onclick="exportCSV()"><div class="settings-icon si-amber">📤</div><div class="settings-label">Export Inventory (CSV)</div><div style="font-size:12px;color:var(--text3)">›</div></div>
+          <div class="settings-row" onclick="exportCSV()"><div class="settings-icon si-amber">📤</div><div class="settings-label">Export Inventory (CSV)</div><div style="font-size:12px;color:var(--text3)">›</div></div>
         </div>
         <div class="settings-group">
           <div class="settings-group-title">Display</div>
-          <div class="settings-row" role="button" tabindex="0" aria-label="Theme set to auto"><div class="settings-icon si-blue">🌓</div><div class="settings-label">Theme</div><div class="settings-val">Auto</div></div>
-          <div class="settings-row"><div class="settings-icon si-green">💲</div><div class="settings-label">Show Prices</div><div class="toggle on" role="switch" aria-checked="true" tabindex="0" onclick="toggleSwitch(this, event)" onkeydown="toggleSwitchKeydown(this, event)"></div></div>
+          <div class="settings-row"><div class="settings-icon si-blue">🌓</div><div class="settings-label">Theme</div><div class="settings-val">Auto</div></div>
+          <div class="settings-row"><div class="settings-icon si-green">💲</div><div class="settings-label">Show Prices</div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
         </div>
         <div class="settings-group">
           <div class="settings-group-title">Data</div>
-          <div class="settings-row" role="button" tabindex="0" aria-label="Clear all data" onclick="clearAllData()"><div class="settings-icon si-red">🗑️</div><div class="settings-label" style="color:var(--red)">Clear All Data</div></div>
+          <div class="settings-row" onclick="clearAllData()"><div class="settings-icon si-red">🗑️</div><div class="settings-label" style="color:var(--red)">Clear All Data</div></div>
         </div>
         <div style="text-align:center;padding:16px 0"><div style="font-size:12px;color:var(--text3)">TackleBox v1.3 · Built for serious anglers 🎣</div></div>
       </div>
     </div>
 
-  </main>
+  </div>
 
-  <nav class="tab-bar" aria-label="Primary">
-    <button class="tab-item active" data-tab="inventory" onclick="switchTab('inventory')" aria-current="page" aria-label="Inventory tab"><div class="tab-icon" aria-hidden="true">📦</div><span>Inventory</span></button>
-    <button class="tab-item" data-tab="add" onclick="switchTab('add')" aria-label="Add item tab"><div class="tab-icon" aria-hidden="true">➕</div><span>Add Item</span></button>
-    <button class="tab-item" data-tab="favs" onclick="switchTab('favs')" aria-label="Favorites tab"><div class="tab-icon" aria-hidden="true">⭐</div><span>Favorites</span></button>
-    <button class="tab-item" data-tab="settings" onclick="switchTab('settings')" aria-label="Settings tab"><div class="tab-icon" aria-hidden="true">⚙️</div><span>Settings</span></button>
-  </nav>
+  <div class="tab-bar">
+    <div class="tab-item active" data-tab="inventory" onclick="switchTab('inventory')"><div class="tab-icon">📦</div><span>Inventory</span></div>
+    <div class="tab-item" data-tab="add" onclick="switchTab('add')"><div class="tab-icon">➕</div><span>Add Item</span></div>
+    <div class="tab-item" data-tab="favs" onclick="switchTab('favs')"><div class="tab-icon">⭐</div><span>Favorites</span></div>
+    <div class="tab-item" data-tab="settings" onclick="switchTab('settings')"><div class="tab-icon">⚙️</div><span>Settings</span></div>
+  </div>
 </div>
 
 <!-- Category Picker Modal -->
-<div class="modal-overlay" id="catModal" role="dialog" aria-modal="true" aria-labelledby="catModalTitle" onclick="closeCatModal(event)">
+<div class="modal-overlay" id="catModal" onclick="closeCatModal(event)">
   <div class="modal" style="padding-bottom:40px;">
     <div class="modal-handle"></div>
-    <div class="modal-title" id="catModalTitle">Choose Category</div>
+    <div class="modal-title">Choose Category</div>
     <div id="catModalBody"></div>
   </div>
 </div>
 
 <!-- Detail / Edit Modal -->
-<div class="modal-overlay" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="closeDetailModal(event)">
+<div class="modal-overlay" id="detailModal" onclick="closeDetailModal(event)">
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-title" id="modalTitle"></div>
@@ -376,6 +404,28 @@ button,input,select,textarea,[role="button"],[tabindex="0"]{font:inherit;}
     </div>
     <div class="modal-pane active" id="paneDetail"></div>
     <div class="modal-pane" id="paneEdit"></div>
+  </div>
+</div>
+
+<!-- Barcode Scanner Overlay -->
+<div class="scanner-overlay" id="scannerOverlay">
+  <div class="scanner-header">
+    <div class="scanner-title">🎣 Scan Barcode</div>
+    <button class="scanner-close" onclick="closeScanner()">✕ Close</button>
+  </div>
+  <div class="scanner-video-wrap">
+    <video id="scannerVideo" playsinline muted autoplay></video>
+    <div class="scanner-frame">
+      <div class="scanner-line"></div>
+    </div>
+  </div>
+  <div class="scanner-footer">
+    <div class="scanner-hint">Point camera at barcode on the package</div>
+    <div class="scanner-result-text" id="scannerResultText">Searching...</div>
+    <div class="scanner-actions" id="scannerActions">
+      <button class="scanner-action-btn btn-search-tw" id="btnSearchTW" onclick="searchTackleWarehouse()">🛒 Search Tackle Warehouse</button>
+      <button class="scanner-action-btn btn-manual" onclick="closeScanner()">✏️ Fill in manually</button>
+    </div>
   </div>
 </div>
 
@@ -423,42 +473,12 @@ let nextId = Math.max(...inventory.map(i=>i.id), 0) + 1;
 
 function save(){ localStorage.setItem('tacklebox_v4', JSON.stringify(inventory)); }
 
-function activateCard(e,id){
-  if(e.key==='Enter' || e.key===' '){
-    e.preventDefault();
-    openDetail(id);
-  }
-}
-
-function toggleSwitch(el, event){
-  if(event) event.stopPropagation();
-  const isOn = el.classList.toggle('on');
-  el.setAttribute('aria-checked', isOn ? 'true' : 'false');
-}
-
-function toggleSwitchKeydown(el, event){
-  if(event.key==='Enter' || event.key===' '){
-    event.preventDefault();
-    toggleSwitch(el, event);
-  }
-}
-
-document.addEventListener('keydown', (event)=>{
-  const el = event.target;
-  if((event.key==='Enter' || event.key===' ') && el.matches('.settings-row[role=\"button\"]')){
-    event.preventDefault();
-    el.click();
-  }
-});
-
 /* ─── TABS ──────────────────────────────────────────── */
 function switchTab(tab){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab-item').forEach(t=>t.classList.remove('active'));
   document.getElementById('screen-'+tab).classList.add('active');
-  document.querySelector(`[data-tab=\"${tab}\"]`).classList.add('active');
-  document.querySelectorAll('.tab-item').forEach(t=>t.removeAttribute('aria-current'));
-  document.querySelector(`[data-tab=\"${tab}\"]`).setAttribute('aria-current','page');
+  document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
   if(tab==='inventory') renderInventory();
   if(tab==='favs') renderFavs();
 }
@@ -509,10 +529,8 @@ function renderFilterChips(){
 }
 
 function mkChip(label, isActive, onClick){
-  const c = document.createElement('button');
+  const c = document.createElement('div');
   c.className = 'chip' + (isActive?' active':'');
-  c.type = 'button';
-  c.setAttribute('aria-pressed', isActive ? 'true' : 'false');
   c.textContent = label;
   c.onclick = onClick;
   return c;
@@ -539,10 +557,10 @@ function renderInventory(){
   if(!items.length){ grid.innerHTML=''; empty.style.display='block'; return; }
   empty.style.display='none';
   grid.innerHTML = items.map(item=>`
-    <div class="gear-card" role="button" tabindex="0" aria-label="Open details for ${item.name}" onclick="openDetail(${item.id})" onkeydown="activateCard(event, ${item.id})">
+    <div class="gear-card" onclick="openDetail(${item.id})">
       <div class="gear-card-img">
         ${item.photo ? `<img src="${item.photo}">` : `<div class="no-img">${CAT_EMOJIS[item.parent]||'📦'}</div>`}
-        <button class="fav-btn${item.fav?' faved':''}" type="button" aria-label="${item.fav ? 'Remove from favorites' : 'Add to favorites'}" aria-pressed="${item.fav ? 'true' : 'false'}" onclick="toggleFav(event,${item.id})">★</button>
+        <button class="fav-btn${item.fav?' faved':''}" onclick="toggleFav(event,${item.id})">★</button>
       </div>
       <div class="gear-card-body">
         <div class="gear-card-cat">${item.parent} <span>› ${item.sub}</span></div>
@@ -551,9 +569,9 @@ function renderInventory(){
         <div class="card-footer">
           <div class="card-price">${item.price?'$'+parseFloat(item.price).toFixed(2):'—'}</div>
           <div class="qty-stepper">
-            <button class="qty-btn" type="button" aria-label="Decrease quantity for ${item.name}" onclick="adjustQty(event,${item.id},-1)">−</button>
+            <button class="qty-btn" onclick="adjustQty(event,${item.id},-1)">−</button>
             <span class="qty-num" id="qtyNum-${item.id}">${item.qty||1}</span>
-            <button class="qty-btn" type="button" aria-label="Increase quantity for ${item.name}" onclick="adjustQty(event,${item.id},1)">+</button>
+            <button class="qty-btn" onclick="adjustQty(event,${item.id},1)">+</button>
           </div>
         </div>
       </div>
@@ -585,14 +603,14 @@ function renderFavs(){
       <div class="fav-thumb">
         ${item.photo?`<img src="${item.photo}">`:`<span>${CAT_EMOJIS[item.parent]||'📦'}</span>`}
       </div>
-      <div class="fav-info" role="button" tabindex="0" aria-label="Open favorite ${item.name}" onclick="openDetail(${item.id})" onkeydown="activateCard(event, ${item.id})">
+      <div class="fav-info" onclick="openDetail(${item.id})">
         <div class="fav-name">${item.name}</div>
         <div class="fav-cat">${item.parent} <span>› ${item.sub}</span></div>
         ${item.link?`<a class="rebuy-link" href="${item.link}" target="_blank" onclick="event.stopPropagation()">🛒 Buy on TW</a>`:`<span style="font-size:11px;color:var(--text3)">${item.brand}</span>`}
       </div>
       <div class="fav-actions">
         <div class="fav-price">${item.price?'$'+parseFloat(item.price).toFixed(2):'—'}</div>
-        <button class="unfav-btn" type="button" aria-label="Remove ${item.name} from favorites" onclick="removeFav(${item.id})">★ Remove</button>
+        <button class="unfav-btn" onclick="removeFav(${item.id})">★ Remove</button>
       </div>
     </div>`).join('');
 }
@@ -616,9 +634,8 @@ function openCatPicker(forEdit, cb){
     const wrapper = document.createElement('div');
     wrapper.style.marginBottom='4px';
 
-    const parentBtn = document.createElement('button');
+    const parentBtn = document.createElement('div');
     parentBtn.className = 'cat-parent-item';
-    parentBtn.type = 'button';
     parentBtn.innerHTML = `<span class="cat-parent-name">${CAT_EMOJIS[parent]||''} ${parent}</span><span class="cat-parent-count">${CATS[parent].length} types ›</span>`;
     wrapper.appendChild(parentBtn);
 
@@ -626,9 +643,8 @@ function openCatPicker(forEdit, cb){
     subList.className = 'cat-sub-list';
     subList.style.display = 'none';
     CATS[parent].forEach(sub=>{
-      const s = document.createElement('button');
+      const s = document.createElement('div');
       s.className = 'cat-sub-item';
-      s.type = 'button';
       s.textContent = sub;
       s.onclick = ()=>{
         if(pendingCatCallback){
@@ -861,6 +877,137 @@ function showToast(msg){
 document.getElementById('searchInput').addEventListener('input',e=>{ searchQ=e.target.value; renderInventory(); });
 
 renderInventory();
+</script>
+
+<!-- ZXing barcode library -->
+<script src="https://unpkg.com/@zxing/library@0.21.3/umd/index.min.js"></script>
+<script>
+/* ─── BARCODE SCANNER ───────────────────────────────── */
+let codeReader = null;
+let scannerStream = null;
+let lastScannedCode = null;
+
+async function openScanner(){
+  const overlay = document.getElementById('scannerOverlay');
+  const resultText = document.getElementById('scannerResultText');
+  const actions = document.getElementById('scannerActions');
+  lastScannedCode = null;
+  resultText.textContent = 'Searching...';
+  actions.classList.remove('visible');
+  overlay.classList.add('open');
+
+  // Request camera
+  try {
+    scannerStream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } }
+    });
+    const video = document.getElementById('scannerVideo');
+    video.srcObject = scannerStream;
+    video.play();
+    startDecoding(video, resultText, actions);
+  } catch(err) {
+    resultText.textContent = 'Camera access denied. Please allow camera in Safari settings.';
+    resultText.style.color = 'var(--red)';
+  }
+}
+
+function startDecoding(video, resultText, actions){
+  if(typeof ZXing === 'undefined'){
+    resultText.textContent = 'Scanner library loading... try again in a moment.';
+    return;
+  }
+  const hints = new Map();
+  const formats = [
+    ZXing.BarcodeFormat.EAN_13,
+    ZXing.BarcodeFormat.EAN_8,
+    ZXing.BarcodeFormat.UPC_A,
+    ZXing.BarcodeFormat.UPC_E,
+    ZXing.BarcodeFormat.CODE_128,
+    ZXing.BarcodeFormat.CODE_39,
+    ZXing.BarcodeFormat.ITF,
+    ZXing.BarcodeFormat.QR_CODE,
+  ];
+  hints.set(ZXing.DecodeHintType.POSSIBLE_FORMATS, formats);
+  hints.set(ZXing.DecodeHintType.TRY_HARDER, true);
+
+  codeReader = new ZXing.MultiFormatReader(hints);
+
+  let scanning = true;
+  let lastAttempt = 0;
+
+  function tick(){
+    if(!scanning) return;
+    const now = Date.now();
+    if(now - lastAttempt < 200){ requestAnimationFrame(tick); return; }
+    lastAttempt = now;
+
+    if(video.readyState === video.HAVE_ENOUGH_DATA){
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(video, 0, 0);
+
+      try {
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const luminanceSource = new ZXing.HTMLCanvasElementLuminanceSource(canvas);
+        const binaryBitmap = new ZXing.BinaryBitmap(new ZXing.HybridBinarizer(luminanceSource));
+        const result = codeReader.decode(binaryBitmap);
+        if(result){
+          scanning = false;
+          lastScannedCode = result.getText();
+          // Show result
+          resultText.textContent = lastScannedCode;
+          resultText.style.color = 'var(--accent)';
+          actions.classList.add('visible');
+          // Haptic feedback if available
+          if(navigator.vibrate) navigator.vibrate(100);
+          // Also fill the barcode field and show it in the form
+          document.getElementById('barcodeValue').textContent = lastScannedCode;
+          document.getElementById('barcodeResult').style.display = 'block';
+          return;
+        }
+      } catch(e){ /* No barcode yet, keep scanning */ }
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function closeScanner(){
+  document.getElementById('scannerOverlay').classList.remove('open');
+  stopCamera();
+  // Reset result text for next open
+  document.getElementById('scannerResultText').textContent = 'Searching...';
+  document.getElementById('scannerResultText').style.color = '';
+  document.getElementById('scannerActions').classList.remove('visible');
+}
+
+function stopCamera(){
+  if(scannerStream){
+    scannerStream.getTracks().forEach(t=>t.stop());
+    scannerStream = null;
+  }
+  codeReader = null;
+  const video = document.getElementById('scannerVideo');
+  video.srcObject = null;
+}
+
+function searchTackleWarehouse(){
+  if(!lastScannedCode) return;
+  // Search TW with the barcode number — opens in Safari and user can confirm the product
+  const query = encodeURIComponent(lastScannedCode);
+  const twUrl = `https://www.tacklewarehouse.com/search.html?Ntt=${query}&Ntk=All`;
+  window.open(twUrl, '_blank');
+  closeScanner();
+  showToast('Copy the TW link and paste it below!');
+}
+
+function clearBarcode(){
+  lastScannedCode = null;
+  document.getElementById('barcodeResult').style.display = 'none';
+  document.getElementById('barcodeValue').textContent = '';
+}
 </script>
 </body>
 </html>
